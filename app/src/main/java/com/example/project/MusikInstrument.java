@@ -68,4 +68,13 @@ public class MusikInstrument {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + id +
+                ", Login: " + login +
+                ", Name: " + name +
+                ", Genre: " + genre +
+                ", Cost: " + cost;
+    }
 }
