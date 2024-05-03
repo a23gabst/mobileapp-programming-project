@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private Gson gson;
     private WebView myWebView;
     private RecyclerView view;
+    private AppBarLayout appBarLayout;
+    private ConstraintLayout constraintLayout;
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
         myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
@@ -106,6 +111,16 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             Log.d("==>","Will display internal web page");
             myWebView.setVisibility(View.VISIBLE);
             view.setVisibility(View.GONE);
+            appBarLayout=findViewById(R.id.appBarLayout);
+            constraintLayout = findViewById(R.id.constraintLayout);
+            // Ändra constrainten för WebView
+
+            ConstraintSet constraintSet = new ConstraintSet();
+            constraintSet.clone(constraintLayout);
+
+            // Uppdatera constrainten för WebView för att placera den under appBarLayout
+            constraintSet.connect(myWebView.getId(), ConstraintSet.TOP, appBarLayout.getId(), ConstraintSet.BOTTOM);
+            constraintSet.applyTo(constraintLayout); // Tillämpa de uppdaterade constrainterna på ConstraintLayout
             showInternalWebPage();
             return true;
         }
