@@ -65,20 +65,28 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         gson=new Gson();
 
 
-        instruments.add(new MusikInstrument("1","GabeLoginValue", "Guitar", "Rock", 10000));
-        instruments.add(new MusikInstrument("","Gabe2LoginValue", "Piano", "Jazz", 200000));
-        instruments.add(new MusikInstrument("3","Gabe3LoginValue", "Ukulele", "Reggae", 100));
+        //instruments.add(new MusikInstrument("1","GabeLoginValue", "Guitar", "Rock", 10000));
+        //instruments.add(new MusikInstrument("2","Gabe2LoginValue", "Piano", "Jazz", 200000));
+        //instruments.add(new MusikInstrument("3","Gabe3LoginValue", "Ukulele", "Reggae", 100));
+        instruments.add(new MusikInstrument("Guitar", "Rock", 100));
+        instruments.add(new MusikInstrument("Ukulele", "Reggae", 10000));
+        instruments.add(new MusikInstrument("Piano", "Classic music", 1000000));
+
+
+
 
         for (int i=0;i<instruments.size();i++) {
             Log.d("Injera", instruments.get(i).toString());
-            recyclerViewItems.add(new RecyclerViewItem(instruments.get(i).toString()));
+            MusikInstrument instrument = instruments.get(i);
+            recyclerViewItems.add(new RecyclerViewItem(instrument.getName(), instrument.getGenre(), instrument.getCost()));
         }
 
 
-        adapter=new RecyclerViewAdapter(this, recyclerViewItems, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, recyclerViewItems, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(RecyclerViewItem item) {
-                Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
+                String message = "Name: " + item.getName() + "\nGenre: " + item.getGenre() + "\nCost: " + item.getCost();
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -135,10 +143,10 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         List<MusikInstrument> listOfInstruments = gson.fromJson(json, type);
         instruments.clear();
         recyclerViewItems.clear();
-        instruments.addAll(listOfInstruments);
-        for(int i=0;i<instruments.size();i++) {
-            Log.d("OnePiece", instruments.get(i).toString());
-            recyclerViewItems.add(new RecyclerViewItem(instruments.get(i).toString()));
+        for(int i = 0; i < listOfInstruments.size(); i++) {
+            MusikInstrument instrument = listOfInstruments.get(i);
+            Log.d("OnePiece", instrument.getName() + ", " + instrument.getGenre() + ", " + instrument.getCost());
+            recyclerViewItems.add(new RecyclerViewItem(instrument.getName(), instrument.getGenre(), instrument.getCost()));
         }
         adapter.notifyDataSetChanged();
     }

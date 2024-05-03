@@ -31,7 +31,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(items.get(position).getTitle());
+        RecyclerViewItem currentItem = items.get(position);
+
+        // Hämta data från currentItem och sätt den på respektive textvy
+        holder.nameText.setText(currentItem.getName());
+        holder.genreText.setText(currentItem.getGenre());
+        holder.costText.setText(String.valueOf(currentItem.getCost()));
     }
 
     @Override
@@ -40,12 +45,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView title;
+        //TextView title;
+        TextView nameText;
+        TextView genreText;
+        TextView costText;
 
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            title = itemView.findViewById(R.id.title);
+            nameText=itemView.findViewById(R.id.textView6);
+            genreText=itemView.findViewById(R.id.textView5);
+            costText=itemView.findViewById(R.id.textView4);
+            //title = itemView.findViewById(R.id.title);
         }
 
         @Override

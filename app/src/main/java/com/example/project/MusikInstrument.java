@@ -29,6 +29,12 @@ public class MusikInstrument {
         this.cost = cost;
     }
 
+    public MusikInstrument(String name, String genre, int cost) {
+        this.name = name;
+        this.genre = genre;
+        this.cost = cost;
+    }
+
     public String getId() {
         return id;
     }
@@ -75,6 +81,6 @@ public class MusikInstrument {
                 ", Login: " + login +
                 ", Name: " + name +
                 ", Genre: " + genre +
-                ", Cost: " + cost;
+                ", Cost: " + cost + "Kr";
     }
 }
