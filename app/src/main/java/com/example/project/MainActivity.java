@@ -1,7 +1,15 @@
 package com.example.project;
 
+import static android.view.View.inflate;
+
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +32,31 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private ArrayList<RecyclerViewItem> recyclerViewItems=new ArrayList<>();
     private RecyclerViewAdapter adapter;
     private Gson gson;
+    private WebView myWebView;
+    private RecyclerView view;
+    public void showExternalWebPage(){
+        // TODO: Add your code for showing external web page here
+        myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
+    }
+
+    public void showInternalWebPage(){
+        // TODO: Add your code for showing internal web page here
+        myWebView.loadUrl("file:///android_asset/about.html");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        myWebView = findViewById(R.id.my_webview);
+        myWebView.setVisibility(View.GONE);
+        myWebView.setWebViewClient(new WebViewClient()); // Do not open in Chrome!
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
+
 
         gson=new Gson();
 
@@ -51,11 +78,39 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             }
         });
 
-        RecyclerView view = findViewById(R.id.recycler_view);
+        view = findViewById(R.id.recycler_view1);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
 
         new JsonTask(this).execute(JSON_URL);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId(); // Hämta ID för det valda menyalternativet
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_external_web) {
+            Log.d("==>","Will display external web page");
+            view.setVisibility(View.VISIBLE);
+            myWebView.setVisibility(View.GONE);
+            showExternalWebPage();
+            return true;
+        }
+
+        if (id == R.id.action_internal_web) {
+            Log.d("==>","Will display internal web page");
+            myWebView.setVisibility(View.VISIBLE);
+            view.setVisibility(View.GONE);
+            showInternalWebPage();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -64,11 +119,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         Type type = new TypeToken<List<MusikInstrument>>() {}.getType();
         List<MusikInstrument> listOfInstruments = gson.fromJson(json, type);
-        //instruments.clear();
+        instruments.clear();
+        recyclerViewItems.clear();
         instruments.addAll(listOfInstruments);
         for(int i=0;i<instruments.size();i++) {
             Log.d("OnePiece", instruments.get(i).toString());
             recyclerViewItems.add(new RecyclerViewItem(instruments.get(i).toString()));
         }
+        adapter.notifyDataSetChanged();
     }
 }

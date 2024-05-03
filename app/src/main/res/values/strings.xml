@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Project</string>
+    <string name="app_webview">Project</string>
+    <string name="app_internal">Ineternal Web Page</string>
+    <string name="app_home">Home</string>
+    <string name="app_nxt_side">Tryck här!</string>
+    <string name="app_text">Vill du veta mer om InstrumentEmporium</string>
 </resources>
