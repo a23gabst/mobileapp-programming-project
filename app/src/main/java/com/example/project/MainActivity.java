@@ -1,7 +1,5 @@
 package com.example.project;
 
-import static android.view.View.inflate;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -60,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         myWebView.setWebViewClient(new WebViewClient()); // Do not open in Chrome!
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setUseWideViewPort(true);
         myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
 
 
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
 
         instruments.add(new MusikInstrument("1","GabeLoginValue", "Guitar", "Rock", 10000));
-        instruments.add(new MusikInstrument("2","Gabe2LoginValue", "Piano", "Jazz", 200000));
+        instruments.add(new MusikInstrument("","Gabe2LoginValue", "Piano", "Jazz", 200000));
         instruments.add(new MusikInstrument("3","Gabe3LoginValue", "Ukulele", "Reggae", 100));
 
         for (int i=0;i<instruments.size();i++) {

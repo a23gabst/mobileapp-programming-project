@@ -2,8 +2,20 @@ body {
     margin: 0px;
     padding: 0px;
 }
-
-h1 {
-   margin-top: 60px;
-   text-align: center;
+.container {
+    margin-top: 60px;
+    position: relative;
+}
+.container img {
+    max-width: 100%;
+    height: auto; /* För att bibehålla bildens proportioner */
+    filter: brightness(70%);
+    object-fit: cover;
+}
+.bildText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, .3);
 }
