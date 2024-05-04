@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             public void onClick(RecyclerViewItem item) {
                 String message = "Name: " + item.getName() + "\nGenre: " + item.getGenre() + "\nCost: " + item.getCost();
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                startActivity(intent);
             }
         });
 
