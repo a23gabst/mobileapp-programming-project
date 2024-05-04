@@ -29,14 +29,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new ViewHolder(layoutInflater.inflate(R.layout.activity_foremal, parent, false));
     }
 
-    @Override
+    /*@Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        RecyclerViewItem currentItem = items.get(position);
+        //RecyclerViewItem currentItem = items.get(position);
 
         // Hämta data från currentItem och sätt den på respektive textvy
-        holder.nameText.setText(currentItem.getName());
-        holder.genreText.setText(currentItem.getGenre());
-        holder.costText.setText(String.valueOf(currentItem.getCost()));
+        //holder.nameText.setText(currentItem.getName());
+        //holder.genreText.setText(currentItem.getGenre());
+        //holder.costText.setText(String.valueOf(currentItem.getCost()+"kr"));
+        holder.nameText.setText(items.get(position).getName());
+        holder.genreText.setText(items.get(position).getGenre());
+        holder.costText.setText(items.get(position).getCost());
+    }*/
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.nameText.setText(items.get(position).getName());
+        holder.genreText.setText(items.get(position).getGenre());
+        holder.costText.setText(String.valueOf(items.get(position).getCost()) + " kr");
     }
 
     @Override
@@ -50,12 +59,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView genreText;
         TextView costText;
 
+
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             nameText=itemView.findViewById(R.id.textView6);
             genreText=itemView.findViewById(R.id.textView5);
             costText=itemView.findViewById(R.id.textView4);
+
             //title = itemView.findViewById(R.id.title);
         }
 

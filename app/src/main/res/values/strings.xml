@@ -3,6 +3,7 @@
     <string name="app_webview">Project</string>
     <string name="app_internal">Ineternal Web Page</string>
     <string name="app_home">Home</string>
-    <string name="app_nxt_side">Tryck här!</string>
-    <string name="app_text">Vill du veta mer om InstrumentEmporium</string>
+    <string name="app_artist">Artist</string>
+    <string name="app_time_line">Timeline</string>
+    <string name="app_origin">Origin</string>
 </resources>

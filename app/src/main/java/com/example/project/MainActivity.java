@@ -9,7 +9,6 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -150,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         for(int i = 0; i < listOfInstruments.size(); i++) {
             MusikInstrument instrument = listOfInstruments.get(i);
             Log.d("OnePiece", instrument.getName() + ", " + instrument.getGenre() + ", " + instrument.getCost());
+            Log.d("==>", instrument.getArtist()+", " + instrument.getTimeLine()+ ", "+ instrument.getOrigin());
             recyclerViewItems.add(new RecyclerViewItem(instrument.getName(), instrument.getGenre(), instrument.getCost()));
         }
         adapter.notifyDataSetChanged();
