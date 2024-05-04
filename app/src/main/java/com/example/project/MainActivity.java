@@ -86,11 +86,10 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         adapter = new RecyclerViewAdapter(this, recyclerViewItems, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(RecyclerViewItem item) {
-                String message = "Name: " + item.getName() + "\nGenre: " + item.getGenre() + "\nCost: " + item.getCost() + "kr";
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-
+                intent.putExtra("artist", item.getArtist());
+                intent.putExtra("timeLine", item.getTimeLine());
+                intent.putExtra("origin", item.getOrigin());
                 startActivity(intent);
             }
         });
