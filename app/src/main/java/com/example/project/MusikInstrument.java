@@ -15,6 +15,7 @@ public class MusikInstrument {
     private String artist;
     @SerializedName("size")
     private int timeLine;
+    @SerializedName("location")
     private String origin;
 
     //Standard konstruktor
@@ -84,6 +85,30 @@ public class MusikInstrument {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public int getTimeLine() {
+        return timeLine;
+    }
+
+    public void setTimeLine(int timeLine) {
+        this.timeLine = timeLine;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     @Override
