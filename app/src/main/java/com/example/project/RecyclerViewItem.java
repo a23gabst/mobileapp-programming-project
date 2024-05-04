@@ -22,7 +22,6 @@ public class RecyclerViewItem {
         this.origin = origin;
     }
 
-
     public String getArtist() {
         return artist;
     }
