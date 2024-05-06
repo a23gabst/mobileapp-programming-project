@@ -4,11 +4,10 @@ body {
 }
 .container-card {
     width: 100%;
-    margin-top: 50px;
     position: relative;
 }
 .container-card img {
-    max-width: 100%;
+    max-width: 99%;
     height: 220px; /* För att bibehålla bildens proportioner */
     filter: brightness(70%);
     object-fit: cover;

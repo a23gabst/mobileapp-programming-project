@@ -15,9 +15,10 @@ public class DetailActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            Log.d("==>1", extras.toString());
             String artist = extras.getString("artist");
             String origin = extras.getString("origin");
-            int timeLine = extras.getInt("timeline");
+            int timeLine = extras.getInt("timeLine");
             Log.d("SendData", artist +" " +timeLine +" "+ origin);
 
             TextView artistText=findViewById(R.id.textView12);

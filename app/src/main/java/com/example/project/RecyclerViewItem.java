@@ -10,6 +10,7 @@ public class RecyclerViewItem {
     private int timeLine;
     private String origin;
 
+
     public RecyclerViewItem(String name, String genre, int cost) {
         this.name = name;
         this.genre = genre;
@@ -21,6 +22,7 @@ public class RecyclerViewItem {
         this.timeLine = timeLine;
         this.origin = origin;
     }
+
 
     public String getArtist() {
         return artist;

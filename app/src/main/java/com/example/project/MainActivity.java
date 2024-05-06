@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         myWebView.setWebViewClient(new WebViewClient()); // Do not open in Chrome!
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setUseWideViewPort(true);
+        webSettings.setUseWideViewPort(false);
         myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
 
 
@@ -69,9 +69,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         //instruments.add(new MusikInstrument("1","GabeLoginValue", "Guitar", "Rock", 10000));
         //instruments.add(new MusikInstrument("2","Gabe2LoginValue", "Piano", "Jazz", 200000));
         //instruments.add(new MusikInstrument("3","Gabe3LoginValue", "Ukulele", "Reggae", 100));
-        instruments.add(new MusikInstrument("Guitar", "Rock", 100));
-        instruments.add(new MusikInstrument("Ukulele", "Reggae", 10000));
-        instruments.add(new MusikInstrument("Piano", "Classic music", 1000000));
 
 
 
@@ -83,9 +80,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
 
 
-        adapter = new RecyclerViewAdapter(this, recyclerViewItems, new RecyclerViewAdapter.OnClickListener() {
+        adapter = new RecyclerViewAdapter(this, instruments, new RecyclerViewAdapter.OnClickListener() {
             @Override
-            public void onClick(RecyclerViewItem item) {
+            public void onClick(MusikInstrument item) {
                 String message = "Name: " + item.getName() + "\nGenre: " + item.getGenre() + "\nCost: " + item.getCost();
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
 
@@ -144,17 +141,18 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     @Override
     public void onPostExecute(String json) {
         Log.d("KLoser", json);
-
         Type type = new TypeToken<List<MusikInstrument>>() {}.getType();
         List<MusikInstrument> listOfInstruments = gson.fromJson(json, type);
+        Log.d("OnePiece1", "" + listOfInstruments.get(0).getTimeLine());
         instruments.clear();
         recyclerViewItems.clear();
-        for(int i = 0; i < listOfInstruments.size(); i++) {
+        adapter.updateData(listOfInstruments);
+        /*for(int i = 0; i < listOfInstruments.size(); i++) {
             MusikInstrument instrument = listOfInstruments.get(i);
             Log.d("OnePiece", instrument.getName() + ", " + instrument.getGenre() + ", " + instrument.getCost());
             Log.d("==>", instrument.getArtist()+", " + instrument.getTimeLine()+ ", "+ instrument.getOrigin());
-            recyclerViewItems.add(new RecyclerViewItem(instrument.getName(), instrument.getGenre(), instrument.getCost()));
-        }
-        adapter.notifyDataSetChanged();
+            instruments.add(new MusikInstrument(instrument.getName(), instrument.getGenre(), instrument.getCost()));
+        }*/
+        //adapter.notifyDataSetChanged();
     }
 }

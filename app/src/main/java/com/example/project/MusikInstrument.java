@@ -18,6 +18,7 @@ public class MusikInstrument {
     @SerializedName("location")
     private String origin;
 
+
     //Standard konstruktor
     public MusikInstrument () {
         id="Saknar ID";
@@ -33,6 +34,17 @@ public class MusikInstrument {
         this.name = name;
         this.genre = genre;
         this.cost = cost;
+    }
+
+    public MusikInstrument(String id, String login, String name, String genre, int cost, String artist, int timeLine, String origin) {
+        this.id = id;
+        this.login = login;
+        this.name = name;
+        this.genre = genre;
+        this.cost = cost;
+        this.artist = artist;
+        this.timeLine = timeLine;
+        this.origin = origin;
     }
 
     public MusikInstrument(String name, String genre, int cost) {

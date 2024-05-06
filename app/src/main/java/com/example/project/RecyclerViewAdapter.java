@@ -14,14 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<RecyclerViewItem> items;
+    private List<MusikInstrument> items;
     private LayoutInflater layoutInflater;
     private OnClickListener onClickListener;
 
-    RecyclerViewAdapter(Context context, List<RecyclerViewItem> items, OnClickListener onClickListener) {
+    RecyclerViewAdapter(Context context, List<MusikInstrument> items, OnClickListener onClickListener) {
         this.layoutInflater = LayoutInflater.from(context);
         this.items = items;
         this.onClickListener = onClickListener;
+    }
+
+    public void updateData(List<MusikInstrument> updateList) {
+        items.clear();
+        items.addAll(updateList);
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -77,6 +83,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public interface OnClickListener {
-        void onClick(RecyclerViewItem item);
+        void onClick(MusikInstrument item);
     }
 }
