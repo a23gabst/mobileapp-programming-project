@@ -45,8 +45,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
-        myWebView.loadUrl("file:///android_asset/about.html");
+        //myWebView.loadUrl("file:///android_asset/about.html");
+        Intent intent = new Intent(MainActivity.this, InternalWebSide.class);
+        startActivity(intent);
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,16 +66,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         webSettings.setUseWideViewPort(false);
         myWebView.loadUrl("file:///android_res/layout/activity_main.xml");
 
-
         gson=new Gson();
-
-
-        //instruments.add(new MusikInstrument("1","GabeLoginValue", "Guitar", "Rock", 10000));
-        //instruments.add(new MusikInstrument("2","Gabe2LoginValue", "Piano", "Jazz", 200000));
-        //instruments.add(new MusikInstrument("3","Gabe3LoginValue", "Ukulele", "Reggae", 100));
-
-
-
 
         for (int i=0;i<instruments.size();i++) {
             Log.d("Injera", instruments.get(i).toString());
@@ -112,26 +107,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
-            view.setVisibility(View.VISIBLE);
-            myWebView.setVisibility(View.GONE);
             showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
-            myWebView.setVisibility(View.VISIBLE);
-            view.setVisibility(View.GONE);
-            appBarLayout=findViewById(R.id.appBarLayout);
-            constraintLayout = findViewById(R.id.constraintLayout);
-            // Ändra constrainten för WebView
-
-            ConstraintSet constraintSet = new ConstraintSet();
-            constraintSet.clone(constraintLayout);
-
-            // Uppdatera constrainten för WebView för att placera den under appBarLayout
-            constraintSet.connect(myWebView.getId(), ConstraintSet.TOP, appBarLayout.getId(), ConstraintSet.BOTTOM);
-            constraintSet.applyTo(constraintLayout); // Tillämpa de uppdaterade constrainterna på ConstraintLayout
             showInternalWebPage();
             return true;
         }
@@ -147,12 +128,5 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         instruments.clear();
         recyclerViewItems.clear();
         adapter.updateData(listOfInstruments);
-        /*for(int i = 0; i < listOfInstruments.size(); i++) {
-            MusikInstrument instrument = listOfInstruments.get(i);
-            Log.d("OnePiece", instrument.getName() + ", " + instrument.getGenre() + ", " + instrument.getCost());
-            Log.d("==>", instrument.getArtist()+", " + instrument.getTimeLine()+ ", "+ instrument.getOrigin());
-            instruments.add(new MusikInstrument(instrument.getName(), instrument.getGenre(), instrument.getCost()));
-        }*/
-        //adapter.notifyDataSetChanged();
     }
 }
