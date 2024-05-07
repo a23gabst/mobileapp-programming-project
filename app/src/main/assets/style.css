@@ -15,7 +15,7 @@ body {
 .bildText {
     position: absolute;
     top: 23%;
-    left: 21%;
+    left: 12%;
     color: white;
     text-align: center;
     text-shadow: 0px 4px 8px rgba(0, 0, 0, .3);
@@ -34,30 +34,41 @@ body {
 }
 .container-card1{
     grid-area: Oss;
-    border: 2px solid black;
+    border: 2px solid lightgrey;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
-    text-justify: inter-word;
+    text-align: justify;
+    text-justify: align;
 }
 .container-card2{
     grid-area: Historia;
-    border: 2px solid black;
+    border: 2px solid lightgrey;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
+    text-align: justify;
+    text-justify: align;
 }
 .container-card3{
     grid-area: Uppdrag;
-    border: 2px solid black;
+    border: 2px solid lightgrey;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
+    text-align: justify;
+    text-justify: align;
 }
 .container-card4{
     grid-area: Kontakta;
-    border: 2px solid black;
+    border: 2px solid lightgrey;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
+    text-align: justify;
+    text-justify: align;
+}
+
+.container-content h2{
+    text-align: center;
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Project</string>
     <string name="app_webview">Project</string>
-    <string name="app_internal">Ineternal Web Page</string>
+    <string name="app_internal">Internal Web Page</string>
     <string name="app_home">Home</string>
     <string name="app_artist">Artist</string>
     <string name="app_time_line">Timeline</string>
