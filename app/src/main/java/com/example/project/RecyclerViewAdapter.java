@@ -35,19 +35,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(layoutInflater.inflate(R.layout.activity_foremal, parent, false));
     }
-
-    /*@Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        //RecyclerViewItem currentItem = items.get(position);
-
-        // Hämta data från currentItem och sätt den på respektive textvy
-        //holder.nameText.setText(currentItem.getName());
-        //holder.genreText.setText(currentItem.getGenre());
-        //holder.costText.setText(String.valueOf(currentItem.getCost()+"kr"));
-        holder.nameText.setText(items.get(position).getName());
-        holder.genreText.setText(items.get(position).getGenre());
-        holder.costText.setText(items.get(position).getCost());
-    }*/
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.nameText.setText(items.get(position).getName());
@@ -61,7 +48,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        //TextView title;
         TextView nameText;
         TextView genreText;
         TextView costText;
@@ -73,7 +59,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             genreText=itemView.findViewById(R.id.textView5);
             costText=itemView.findViewById(R.id.textView4);
 
-            //title = itemView.findViewById(R.id.title);
         }
 
         @Override

@@ -7,8 +7,8 @@ body {
     position: relative;
 }
 .container-card img {
-    max-width: 100%;
-    height: 220px; /* För att bibehålla bildens proportioner */
+    width: 100%;
+    height: 220px;
     filter: brightness(70%);
     object-fit: cover;
 }
