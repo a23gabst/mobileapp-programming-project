@@ -23,12 +23,15 @@ body {
 .container-content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 20px 0px;
     grid-template-areas:
     "Oss"
+    "Bild1"
     "Historia"
+    "Bild3"
     "Uppdrag"
+    "Bild2"
     "Kontakta";
     padding: 15px;
 }
@@ -38,8 +41,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
-    text-align: justify;
-    text-justify: align;
+    height: 60vw;
 }
 .container-card2{
     grid-area: Historia;
@@ -47,8 +49,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
-    text-align: justify;
-    text-justify: align;
+    height: 60vw;
 }
 .container-card3{
     grid-area: Uppdrag;
@@ -56,8 +57,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
-    text-align: justify;
-    text-justify: align;
+    height: 60vw;
 }
 .container-card4{
     grid-area: Kontakta;
@@ -65,10 +65,32 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0,0,0,.3);
     padding: 10px;
-    text-align: justify;
-    text-justify: align;
+    height: 60vw;
 }
 
 .container-content h2{
     text-align: center;
+    font-size: 25px;
+}
+.container-content p{
+    text-align: center;
+    font-size: 20px;
+}
+.container-card5{
+    grid-area: Bild1;
+    border-radius: 10px;
+    height:60vw;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.3);
+}
+.container-card6{
+    grid-area: Bild2;
+    border-radius: 10px;
+    height:60vw;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.3);
+}
+.container-card7{
+    grid-area: Bild3;
+    border-radius: 10px;
+    height:60vw;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.3);
 }
